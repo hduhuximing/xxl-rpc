@@ -1,5 +1,6 @@
 package com.xxl.rpc.remoting.net.impl.mina.server;
 
+import com.xxl.rpc.remoting.net.params.Beat;
 import com.xxl.rpc.remoting.net.params.XxlRpcRequest;
 import com.xxl.rpc.remoting.net.params.XxlRpcResponse;
 import com.xxl.rpc.remoting.provider.XxlRpcProviderFactory;
@@ -34,28 +35,33 @@ public class MinaServerHandler extends IoHandlerAdapter {
 	@Override
 	public void messageReceived(final IoSession session, Object message) throws Exception {
 
-		// request
-		final XxlRpcRequest xxlRpcRequest = (XxlRpcRequest) message;
+        // request
+        final XxlRpcRequest xxlRpcRequest = (XxlRpcRequest) message;
 
-		try {
-			// do invoke
-			serverHandlerPool.execute(new Runnable() {
-				@Override
-				public void run() {
-					// invoke + response
-					XxlRpcResponse xxlRpcResponse = xxlRpcProviderFactory.invokeService(xxlRpcRequest);
+        // filter beat
+        if (Beat.BEAT_ID.equalsIgnoreCase(xxlRpcRequest.getRequestId())){
+            return;
+        }
 
-					session.write(xxlRpcResponse);
-				}
-			});
-		} catch (Exception e) {
-			// catch error
-			XxlRpcResponse xxlRpcResponse = new XxlRpcResponse();
-			xxlRpcResponse.setRequestId(xxlRpcRequest.getRequestId());
-			xxlRpcResponse.setErrorMsg(ThrowableUtil.toString(e));
+        // do invoke
+        try {
+            serverHandlerPool.execute(new Runnable() {
+                @Override
+                public void run() {
+                    // invoke + response
+                    XxlRpcResponse xxlRpcResponse = xxlRpcProviderFactory.invokeService(xxlRpcRequest);
 
-			session.write(xxlRpcResponse);
-		}
+                    session.write(xxlRpcResponse);
+                }
+            });
+        } catch (Exception e) {
+            // catch error
+            XxlRpcResponse xxlRpcResponse = new XxlRpcResponse();
+            xxlRpcResponse.setRequestId(xxlRpcRequest.getRequestId());
+            xxlRpcResponse.setErrorMsg(ThrowableUtil.toString(e));
+
+            session.write(xxlRpcResponse);
+        }
 
 	}
 	

@@ -1,6 +1,7 @@
 package com.xxl.rpc.remoting.net.impl.netty_http.server;
 
 import com.xxl.rpc.remoting.net.Server;
+import com.xxl.rpc.remoting.net.params.Beat;
 import com.xxl.rpc.remoting.provider.XxlRpcProviderFactory;
 import com.xxl.rpc.util.ThreadPoolUtil;
 import io.netty.bootstrap.ServerBootstrap;
@@ -35,7 +36,10 @@ public class NettyHttpServer extends Server  {
             public void run() {
 
                 // param
-                final ThreadPoolExecutor serverHandlerPool = ThreadPoolUtil.makeServerThreadPool(NettyHttpServer.class.getSimpleName());
+                final ThreadPoolExecutor serverHandlerPool = ThreadPoolUtil.makeServerThreadPool(
+                        NettyHttpServer.class.getSimpleName(),
+                        xxlRpcProviderFactory.getCorePoolSize(),
+                        xxlRpcProviderFactory.getMaxPoolSize());
                 EventLoopGroup bossGroup = new NioEventLoopGroup();
                 EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -48,7 +52,7 @@ public class NettyHttpServer extends Server  {
                                 @Override
                                 public void initChannel(SocketChannel channel) throws Exception {
                                     channel.pipeline()
-                                            .addLast(new IdleStateHandler(0, 0, 10, TimeUnit.MINUTES))
+                                            .addLast(new IdleStateHandler(0, 0, Beat.BEAT_INTERVAL * 3, TimeUnit.SECONDS))  // beat 3N, close if idle
                                             .addLast(new HttpServerCodec())
                                             .addLast(new HttpObjectAggregator(5 * 1024 * 1024))  // merge request & reponse to FULL
                                             .addLast(new NettyHttpServerHandler(xxlRpcProviderFactory, serverHandlerPool));
