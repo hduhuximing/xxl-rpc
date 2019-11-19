@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author xuxueli 2018-12-21
  */
 public class JFinalCoreConfig extends JFinalConfig {
 	private Logger logger = LoggerFactory.getLogger(JFinalCoreConfig.class);

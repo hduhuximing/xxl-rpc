@@ -3,7 +3,6 @@ package com.xxl.rpc.remoting.invoker.route;
 import com.xxl.rpc.remoting.invoker.route.impl.*;
 
 /**
- * @author xuxueli 2018-12-04
  */
 public enum LoadBalance {
 

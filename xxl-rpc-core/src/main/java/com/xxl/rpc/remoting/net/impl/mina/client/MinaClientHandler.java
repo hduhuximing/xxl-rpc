@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * rpc mina handler
- * @author xuxueli 2015-11-14 18:55:19
  */
 public class MinaClientHandler extends IoHandlerAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(MinaClientHandler.class);

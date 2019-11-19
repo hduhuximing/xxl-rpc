@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
  *                  - value01 (ip:port01)
  *                  - value02 (ip:port02)
  *
- * @author xuxueli 2018-10-17
  */
 public class ZkServiceRegistry extends ServiceRegistry {
     private static Logger logger = LoggerFactory.getLogger(ZkServiceRegistry.class);

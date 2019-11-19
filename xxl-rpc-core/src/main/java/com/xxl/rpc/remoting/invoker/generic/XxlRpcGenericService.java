@@ -1,7 +1,6 @@
 package com.xxl.rpc.remoting.invoker.generic;
 
 /**
- * @author xuxueli 2018-12-04
  */
 public interface XxlRpcGenericService {
 

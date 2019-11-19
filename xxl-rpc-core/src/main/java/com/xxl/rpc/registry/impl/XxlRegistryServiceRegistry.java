@@ -9,7 +9,6 @@ import java.util.*;
 /**
  * service registry for "xxl-registry v1.0.1"
  *
- * @author xuxueli 2018-11-30
  */
 public class XxlRegistryServiceRegistry extends ServiceRegistry {
 

@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 
 /**
- * @author xuxueli 2018-12-21
  */
 public class JFinalCoreConfig extends JFinalConfig {
 	private Logger logger = LoggerFactory.getLogger(JFinalCoreConfig.class);

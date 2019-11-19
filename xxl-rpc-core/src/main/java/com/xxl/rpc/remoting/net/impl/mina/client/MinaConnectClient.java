@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * mina pooled client
  *
- * @author xuxueli
  */
 public class MinaConnectClient extends ConnectClient {
 

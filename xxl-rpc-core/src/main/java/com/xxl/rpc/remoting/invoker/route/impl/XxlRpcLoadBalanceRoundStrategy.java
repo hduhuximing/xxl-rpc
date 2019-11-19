@@ -10,7 +10,6 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * round
  *
- * @author xuxueli 2018-12-04
  */
 public class XxlRpcLoadBalanceRoundStrategy extends XxlRpcLoadBalance {
 

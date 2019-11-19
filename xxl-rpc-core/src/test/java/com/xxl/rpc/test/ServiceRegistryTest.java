@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author xuxueli 2018-10-17
  */
 public class ServiceRegistryTest {
 

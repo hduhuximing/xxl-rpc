@@ -5,7 +5,6 @@ import com.xxl.rpc.sample.api.dto.UserDTO;
 import com.xxl.rpc.sample.client.config.XxlRpcClient;
 
 /**
- * @author xuxueli 2018-12-21
  */
 public class IndexController extends Controller {
 

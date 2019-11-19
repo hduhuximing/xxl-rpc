@@ -13,7 +13,6 @@ import java.util.HashMap;
 /**
  * xxl-rpc provider config
  *
- * @author xuxueli 2018-10-19
  */
 @Configuration
 public class XxlRpcProviderConfig {

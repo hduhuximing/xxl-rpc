@@ -16,7 +16,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author xuxueli 2018-10-21 20:48:40
  */
 public class XxlRpcClientAplication {
 

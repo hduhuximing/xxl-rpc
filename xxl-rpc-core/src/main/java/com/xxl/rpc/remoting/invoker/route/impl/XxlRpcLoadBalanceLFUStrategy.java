@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * lru
  *
- * @author xuxueli 2018-12-04
  */
 public class XxlRpcLoadBalanceLFUStrategy extends XxlRpcLoadBalance {
 
